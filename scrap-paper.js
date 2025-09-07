@@ -31,6 +31,7 @@ const objectTest = {};
 
 objectTest["new file"] = "index.html";
 // essentially [key] = "whatever value I input here"
+// key can also be a variable
 
 console.log(objectTest);
 

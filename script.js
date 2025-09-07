@@ -98,11 +98,14 @@ function getLearnerData(course, ag, submissions) {
     // ternary since it's a simple true/false question
     // will update this later as I just focus on getting the results to look the same as the example version
 
-    course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
+    // course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
+    if ( course.id !== ag.course_id) {
+      return [];
+    }
 
     // going to save this for the assignment that isn't due yet so stashing here for now
     const currentDate = new Date();
-    console.log(currentDate);
+    // console.log(currentDate);
     
     // ***************************************************************************
     // I know I need to loop through the submissions in order to retrive the learner's IDs.
@@ -135,28 +138,32 @@ function getLearnerData(course, ag, submissions) {
 
     // ***************************************************************************
     // In this loop, I am grabbing only the submissions but I will need to match the assignmnets number to the corresponding number inside each submission object
-    // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id 
+    // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
       console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
 
     for (let i = 0; i < submissions.length; i++) {
         const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
-        // console.log(singleSubmission); 
-    // I can use an inner loop to go through the ag (assignments object now to match the IDs to the corresponding submissions).
-
-          // declaring a variable for when the assignments match so I can use it inside of if else statements
-      let assignentIsAMatch; 
-
-          // start from 0 index; targeting the length of the assignments[] that is inside the assignments{}; increment through the assignments[]
-    // for (let j = 0; ag.assignments.length; j++) {
-
-
-
-    // }  
+        console.log(singleSubmission); 
 
     }
 
   // ***************************************************************************
-
+  // In this loop I will be going through the assignments by their IDs and putting 
+  // them into an object since I'll need their ID to average the learner's score (in submissions) against 
+  // the total points possible (in assignments / ag).
+  // assignmentByID acts as a drawer that points to 1, 2, 3 folders that hold the info for each assignment inside.
+  const assignmentByID = {};
+    for (let i = 0; i < ag.assignments.length; i++) {
+      const assignment = ag.assignments[i];
+      console.log(assignment.id); // key for each corresponding assignment object
+      // pushing the ID of each assignmnet as a key to my assignmentByID object
+      // targets object[key] = the assignments get added to the assignmentByID{} as the for loop loops
+      // through the original AssignmentGroup object aka ag.assignments[0], [1], etc.
+      assignmentByID[assignment.id] = assignment;
+      
+    }
+    console.log(assignmentByID);
+  
 
 // here, we would process this data to achieve the desired result.
 //   const result = [
