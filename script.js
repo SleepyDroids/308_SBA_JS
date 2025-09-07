@@ -16,19 +16,19 @@ const AssignmentGroup = {
   course_id: 451,
   group_weight: 25,
   assignments: [
-    {
+    {// assignments[0]
       id: 1,
       name: "Declare a Variable",
       due_at: "2023-01-25",
       points_possible: 50
     },
-    {
+    {// assignments[1]
       id: 2,
       name: "Write a Function",
       due_at: "2023-02-27",
       points_possible: 150
     },
-    {
+    {// assignments[2]
       id: 3,
       name: "Code the World",
       due_at: "3156-11-15",
@@ -39,7 +39,7 @@ const AssignmentGroup = {
 
 // The provided learner submission data.
 const LearnerSubmissions = [
-  {
+  {// submissions[0]
     learner_id: 125,
     assignment_id: 1,
     submission: {
@@ -47,7 +47,7 @@ const LearnerSubmissions = [
       score: 47
     }
   },
-  {
+  {// submissions[1]
     learner_id: 125,
     assignment_id: 2,
     submission: {
@@ -55,7 +55,7 @@ const LearnerSubmissions = [
       score: 150
     }
   },
-  {
+  {// submissions[2]
     learner_id: 125,
     assignment_id: 3,
     submission: {
@@ -63,7 +63,7 @@ const LearnerSubmissions = [
       score: 400
     }
   },
-  {
+  {// submissions[3]
     learner_id: 132,
     assignment_id: 1,
     submission: {
@@ -71,7 +71,7 @@ const LearnerSubmissions = [
       score: 39
     }
   },
-  {
+  {// submissions[4]
     learner_id: 132,
     assignment_id: 2,
     submission: {
@@ -101,7 +101,7 @@ function getLearnerData(course, ag, submissions) {
     course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
 
     // ***************************************************************************
-    // I know I need to loop through the submissions in order to retrive the learner's IDs and also link the learners to their respective submissions.
+    // I know I need to loop through the submissions in order to retrive the learner's IDs.
 
     const arrayOfLearnerIDs = []; // setting up an empty array to hold the learner IDs
 
@@ -130,14 +130,17 @@ function getLearnerData(course, ag, submissions) {
     console.log(arrayOfLearnerIDs); // [125, 132] 
 
     // ***************************************************************************
-    // In this loop, I am grabbing only the submissions but I will need to match the assignmnets to the corresponding learner ID  
-    for (let j = 0; j < submissions.length; j++) {
-        const singleSubmission = submissions[j]; // grabbing all submitted assignment objects
+    // In this loop, I am grabbing only the submissions but I will need to match the assignmnets number to the corresponding number inside each submission object
+    // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id 
+      console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
+
+    for (let i = 0; i < submissions.length; i++) {
+        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects
         console.log(singleSubmission); 
     }
 
 
-  // here, we would process this data to achieve the desired result.
+// here, we would process this data to achieve the desired result.
 //   const result = [
 //     {
 //       id: 125,
