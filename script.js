@@ -129,24 +129,12 @@ function getLearnerData(course, ag, submissions) {
     It skips over the duplicate entries because it only pushes the value if it 
     ISN'T there. Else if it is already there, it does not push.
     */
-    // if (!learnerByID.includes(grabID)) {
-    //     learnerByID.push(grabID);
-    // }
-    !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
+    if (!arrayOfLearnerIDs.includes(grabID)) {
+        arrayOfLearnerIDs.push(grabID);
+    }
+   // !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
 }
     console.log(arrayOfLearnerIDs); // [125, 132] 
-
-    // ***************************************************************************
-    // In this loop, I am grabbing only the submissions but I will need to match the assignmnets number to the corresponding number inside each submission object
-    // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
-      console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
-
-    for (let i = 0; i < submissions.length; i++) {
-        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
-        console.log(singleSubmission); 
-
-    }
-
   // ***************************************************************************
   // In this loop I will be going through the assignments by their IDs and putting 
   // them into an object since I'll need their ID to average the learner's score (in submissions) against 
@@ -164,6 +152,18 @@ function getLearnerData(course, ag, submissions) {
     }
     console.log(assignmentByID);
   
+
+    // ***************************************************************************
+    // In this loop, I am grabbing only the submissions but I will need to match the assignmnets number to the corresponding number inside each submission object
+    // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
+      console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
+
+    for (let i = 0; i < submissions.length; i++) {
+        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
+        console.log(singleSubmission); 
+
+    }
+
 
 // here, we would process this data to achieve the desired result.
 //   const result = [
