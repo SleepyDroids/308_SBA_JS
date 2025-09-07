@@ -135,8 +135,17 @@ function getLearnerData(course, ag, submissions) {
       console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
 
     for (let i = 0; i < submissions.length; i++) {
-        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects
-        console.log(singleSubmission); 
+        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
+        // console.log(singleSubmission); 
+    // I can use an inner loop to go through the ag (assignments object now to match the IDs to the corresponding submissions).
+          // start from 0 index; targeting the length of the assignments[] that is inside the assignments{}; increment through the assignments[]
+    for (let j = 0; ag.assignments.length; j++) {
+      // declaring a variable for when the assignments match so I can use it inside of if else statements
+      let assignentIsAMatch; 
+      
+
+    }  
+
     }
 
 
