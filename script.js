@@ -85,12 +85,12 @@ function getLearnerData(course, ag, submissions) {
 
     // ***************************************************************************
     // Testing value retrieval with a template literal to make sure I understand the 'layers' of the arrays, objects and their keys respectively. 
-    console.log(`Learner ${submissions[0].learner_id} submitted the assignment ${submissions[0].assignment_id} on ${submissions[0].submission.submitted_at} and received a score of ${submissions[0].submission.score} out of a possible ${ag.assignments[0].points_possible}.`)
+    // console.log(`Learner ${submissions[0].learner_id} submitted the assignment ${submissions[0].assignment_id} on ${submissions[0].submission.submitted_at} and received a score of ${submissions[0].submission.score} out of a possible ${ag.assignments[0].points_possible}.`)
 
   /*
-    course -----> CourseInfo
-    ag -----> AssignmentGroup
-    submissions ------> LearnerSubmissions
+    course --------> CourseInfo
+    ag --------> AssignmentGroup
+    submissions --------> LearnerSubmissions
   */
 
     // ***************************************************************************
@@ -100,6 +100,10 @@ function getLearnerData(course, ag, submissions) {
 
     course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
 
+    // going to save this for the assignment that isn't due yet so stashing here for now
+    const currentDate = new Date();
+    console.log(currentDate);
+    
     // ***************************************************************************
     // I know I need to loop through the submissions in order to retrive the learner's IDs.
 
@@ -138,15 +142,20 @@ function getLearnerData(course, ag, submissions) {
         const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
         // console.log(singleSubmission); 
     // I can use an inner loop to go through the ag (assignments object now to match the IDs to the corresponding submissions).
-          // start from 0 index; targeting the length of the assignments[] that is inside the assignments{}; increment through the assignments[]
-    for (let j = 0; ag.assignments.length; j++) {
-      // declaring a variable for when the assignments match so I can use it inside of if else statements
-      let assignentIsAMatch; 
-      
 
-    }  
+          // declaring a variable for when the assignments match so I can use it inside of if else statements
+      let assignentIsAMatch; 
+
+          // start from 0 index; targeting the length of the assignments[] that is inside the assignments{}; increment through the assignments[]
+    // for (let j = 0; ag.assignments.length; j++) {
+
+
+
+    // }  
 
     }
+
+  // ***************************************************************************
 
 
 // here, we would process this data to achieve the desired result.
