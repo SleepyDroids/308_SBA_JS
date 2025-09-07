@@ -1,0 +1,161 @@
+// Jacqueline LaFontaine
+// SBA 308: Javascript Fundamentals 
+
+// ***************************************************************************
+
+// The provided course information.
+const CourseInfo = {
+  id: 451,
+  name: "Introduction to JavaScript"
+};
+
+// The provided assignment group.
+const AssignmentGroup = {
+  id: 12345,
+  name: "Fundamentals of JavaScript",
+  course_id: 451,
+  group_weight: 25,
+  assignments: [
+    {
+      id: 1,
+      name: "Declare a Variable",
+      due_at: "2023-01-25",
+      points_possible: 50
+    },
+    {
+      id: 2,
+      name: "Write a Function",
+      due_at: "2023-02-27",
+      points_possible: 150
+    },
+    {
+      id: 3,
+      name: "Code the World",
+      due_at: "3156-11-15",
+      points_possible: 500
+    }
+  ]
+};
+
+// The provided learner submission data.
+const LearnerSubmissions = [
+  {
+    learner_id: 125,
+    assignment_id: 1,
+    submission: {
+      submitted_at: "2023-01-25",
+      score: 47
+    }
+  },
+  {
+    learner_id: 125,
+    assignment_id: 2,
+    submission: {
+      submitted_at: "2023-02-12",
+      score: 150
+    }
+  },
+  {
+    learner_id: 125,
+    assignment_id: 3,
+    submission: {
+      submitted_at: "2023-01-25",
+      score: 400
+    }
+  },
+  {
+    learner_id: 132,
+    assignment_id: 1,
+    submission: {
+      submitted_at: "2023-01-24",
+      score: 39
+    }
+  },
+  {
+    learner_id: 132,
+    assignment_id: 2,
+    submission: {
+      submitted_at: "2023-03-07",
+      score: 140
+    }
+  }
+];
+
+function getLearnerData(course, ag, submissions) {
+
+    // ***************************************************************************
+    // Testing value retrieval with a template literal to make sure I understand the 'layers' of the arrays, objects and their keys respectively. 
+    console.log(`Learner ${submissions[0].learner_id} submitted the assignment ${submissions[0].assignment_id} on ${submissions[0].submission.submitted_at} and received a score of ${submissions[0].submission.score} out of a possible ${ag.assignments[0].points_possible}.`)
+
+  /*
+    course -----> CourseInfo
+    ag -----> AssignmentGroup
+    submissions ------> LearnerSubmissions
+  */
+
+    // ***************************************************************************
+    // using a ternary operator here to check if the course IDs match across objects
+    // ternary since it's a simple true/false question
+    // will update this later as I just focus on getting the results to look the same as the example version
+
+    course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
+
+    // ***************************************************************************
+    // I know I need to loop through the submissions in order to retrive the learner's IDs and also link the learners to their respective submissions.
+
+    const arrayOfLearnerIDs = []; // setting up an empty array to hold the learner IDs
+
+    for (let i =0; i < submissions.length; i++) {
+    const grabID = submissions[i].learner_id // targeting the learner ID number
+    
+    // I am pushing the learner_id from the object of LearnerSubmissions
+    // into the empty array I defined earlier
+
+    // want to account for duplications while I am looping so it doesn't push
+    // multiple values into my arrayOfLearnerIDs
+
+    /*
+    .includes() checks an element inside a given array to see if it exists 
+    SO !learnerByID.includes(grabID) is basically checking if the value is NOT
+    in the empty array. If it's not there, it is pushed to the array. 
+
+    It skips over the duplicate entries because it only pushes the value if it 
+    ISN'T there. Else if it is already there, it does not push.
+    */
+    // if (!learnerByID.includes(grabID)) {
+    //     learnerByID.push(grabID);
+    // }
+    !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
+}
+    console.log(arrayOfLearnerIDs); // [125, 132] 
+
+    // ***************************************************************************
+    // In this loop, I am grabbing only the submissions but I will need to match the assignmnets to the corresponding learner ID  
+    for (let j = 0; j < submissions.length; j++) {
+        const singleSubmission = submissions[j]; // grabbing all submitted assignment objects
+        console.log(singleSubmission); 
+    }
+
+
+  // here, we would process this data to achieve the desired result.
+//   const result = [
+//     {
+//       id: 125,
+//       avg: 0.985, // (47 + 150) / (50 + 150)
+//       1: 0.94, // 47 / 50
+//       2: 1.0 // 150 / 150
+//     },
+//     {
+//       id: 132,
+//       avg: 0.82, // (39 + 125) / (50 + 150)
+//       1: 0.78, // 39 / 50
+//       2: 0.833 // late: (140 - 15) / 150
+//     }
+//   ];
+
+//   return result;
+}
+
+const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+// console.log(result);
