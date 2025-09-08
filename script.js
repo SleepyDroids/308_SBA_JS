@@ -150,7 +150,9 @@ function getLearnerData(course, ag, submissions) {
       assignmentByID[assignment.id] = assignment;
       
     }
+
     console.log(assignmentByID);
+    // console.log(assignmentByID["3"].points_possible); // testing value retrieval
   
 
     // ***************************************************************************
@@ -158,11 +160,35 @@ function getLearnerData(course, ag, submissions) {
     // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
       console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
 
+    // function getAssignments() {
+
+    // }
+
+    console.log(submissions[0].submission.score);
+
+        const expectedResult = []; 
+
     for (let i = 0; i < submissions.length; i++) {
-        const singleSubmission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
-        console.log(singleSubmission); 
+        const submission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
+        console.log(submission); 
+
+                console.log(submission.learner_id);
+
+            if (!expectedResult.includes(submission.learner_id)) {
+        expectedResult.push([submission.learner_id] = "125");
+    }
+
+
 
     }
+
+    console.log(expectedResult);
+
+    // initializing some variables for later 
+    let avg1 = 0;
+    let avg2 = 0;
+
+
 
 
 // here, we would process this data to achieve the desired result.
