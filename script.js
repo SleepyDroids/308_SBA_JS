@@ -81,6 +81,7 @@ const LearnerSubmissions = [
   }
 ];
 
+
 function getLearnerData(course, ag, submissions) {
 
     // ***************************************************************************
@@ -92,6 +93,15 @@ function getLearnerData(course, ag, submissions) {
     ag --------> AssignmentGroup
     submissions --------> LearnerSubmissions
   */
+
+            // setting up my array to push objects into 
+        const expectedResult = []; 
+        // keeping this here just in case 
+        const pocket = {};
+
+            // initializing some variables for later 
+    let avg1 = 0;
+    let avg2 = 0;
 
     // ***************************************************************************
     // using a ternary operator here to check if the course IDs match across objects
@@ -131,64 +141,100 @@ function getLearnerData(course, ag, submissions) {
     */
     if (!arrayOfLearnerIDs.includes(grabID)) {
         arrayOfLearnerIDs.push(grabID);
+        
     }
+
+ 
    // !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
 }
-    console.log(arrayOfLearnerIDs); // [125, 132] 
+   console.log(arrayOfLearnerIDs); // [125, 132] 
+
+   // please don't ask, trying to figure something out here
+  //  if (expectedResult.isArray()) {
+  //   for (i = 0; i < arrayOfLearnerIDs.length; i++) {
+  //     arrayOfLearnerIDs = arrayOfLearnerIDs[i];
+  //     expectedResult.push(pocket["id"] = arrayOfLearnerIDs); 
+  //   }
+  //  }
+
+  //  console.log(expectedResult);
+
+
   // ***************************************************************************
   // In this loop I will be going through the assignments by their IDs and putting 
   // them into an object since I'll need their ID to average the learner's score (in submissions) against 
   // the total points possible (in assignments / ag).
   // assignmentByID acts as a drawer that points to 1, 2, 3 folders that hold the info for each assignment inside.
+  // const retrieveAssignment = {};
+
+function getAssignment() {
+      for (let i = 0; i < ag.assignments.length; i++) {
+       const assignment = ag.assignments[i];
+      //const assignment =  getAssignment(i.assignment_id); 
+      // console.log(assignment.id); // key for each corresponding assignment object
+      // pushing the ID of each assignmnet as a key to my assignmentByID object
+      // targets object[key] = the assignments get added to the assignmentByID{} as the for loop loops
+      // through the original AssignmentGroup object aka ag.assignments[0], [1], etc.
+      console.log(assignment);
+
+      // expectedResult.push(assignment);
+      return assignment;
+    };
+
+  };
+
+  console.log(getAssignment());
+
   const assignmentByID = {};
+
     for (let i = 0; i < ag.assignments.length; i++) {
       const assignment = ag.assignments[i];
-      console.log(assignment.id); // key for each corresponding assignment object
+      // console.log(assignment.id); // key for each corresponding assignment object
       // pushing the ID of each assignmnet as a key to my assignmentByID object
       // targets object[key] = the assignments get added to the assignmentByID{} as the for loop loops
       // through the original AssignmentGroup object aka ag.assignments[0], [1], etc.
       assignmentByID[assignment.id] = assignment;
+
+      // expectedResult.push(assignment);
       
     }
 
     console.log(assignmentByID);
-    // console.log(assignmentByID["3"].points_possible); // testing value retrieval
+    console.log(assignmentByID["3"].points_possible); // testing value retrieval
   
 
     // ***************************************************************************
     // In this loop, I am grabbing only the submissions but I will need to match the assignmnets number to the corresponding number inside each submission object
     // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
-      console.log(ag.assignments[0].id, submissions[0].assignment_id); // 1 1
+      console.log(ag.assignments[0].id, 
+        submissions[0].assignment_id); // 1 1
 
     // function getAssignments() {
 
     // }
 
-    console.log(submissions[0].submission.score);
+    console.log(submissions[0].submission.score); // 47
 
-        const expectedResult = []; 
+
 
     for (let i = 0; i < submissions.length; i++) {
-        const submission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
-        console.log(submission); 
+       // const submission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
+        console.log(submissions[i]); 
 
-                console.log(submission.learner_id);
+        // if (i + 1 === submissions.length) {
 
-            if (!expectedResult.includes(submission.learner_id)) {
-        expectedResult.push([submission.learner_id] = "125");
+        // }
+
+
+    //         if (!expectedResult.includes(submission.learner_id)) {
+    //     expectedResult.push([submission.learner_id] = "125");
+    // }
+
     }
 
 
-
-    }
 
     console.log(expectedResult);
-
-    // initializing some variables for later 
-    let avg1 = 0;
-    let avg2 = 0;
-
-
 
 
 // here, we would process this data to achieve the desired result.
