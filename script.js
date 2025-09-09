@@ -101,6 +101,7 @@ function getLearnerData(course, ag, submissions) {
         const pocket = {};
 
             // initializing some variables for later and using 'let' since they'll need to be redefinable
+    let avg = 0;        
     let avg1 = 0;
     let avg2 = 0;
 
@@ -355,7 +356,23 @@ function getLearnerData(course, ag, submissions) {
 
     // need to grab the info from the pocket object
     const info = pocket[studentID];
-    console.log(info); // still not logging the correct info but will try to fix later
+    console.log(info); // still not logging the correct info but will try to fix later, just trying to establish structure first
+    // wait nvm I haven't computed their avgs yet 
+
+    avg = 0; 
+
+    // procs because all the students earned points on their current assignments
+    if (info.pointsPossible > 0) {
+      avg = info.totalEarned / info.pointsPossible;
+    }
+
+    // can now add their avg and studentID as an object
+    const row = { 
+      id: studentID,
+      avg: avg
+    }
+
+
   }  
     
 
