@@ -349,6 +349,8 @@ function getLearnerData(course, ag, submissions) {
     4. Need to pull from pocket to link to learner ID? 
     */
 
+    // To clarify: two loops, first one loops through each learner ID and the second loop grabs every assignment for that student
+
   for (let i = 0; i < arrayOfLearnerIDs.length; i++) {
     // variable localized to this code block so I can use the same name
     const studentID = arrayOfLearnerIDs[i];
@@ -366,11 +368,20 @@ function getLearnerData(course, ag, submissions) {
       avg = info.totalEarned / info.pointsPossible;
     }
 
-    // can now add their avg and studentID as an object
+    // can now add their avg and studentID as an object or at least start to build something I can push to the results array
+    // did something like this in the previous assignment
     const row = { 
-      id: studentID,
-      avg: avg
+      id: studentID, // getting value from my arrayOfLearnerIDs
+      avg: avg // the only straight forward part of my code aka their GPA
     }
+
+    // need to add per assignment scores/averages as well
+    // so INNER loop (i'm afraid)
+    for (let j = 0; j < ag.assignments.length; j++) {
+      const currentAssignmentID = ag.assignments[j].id; 
+      // console.log(currentAssignmentID); // correctly targets ID number per assignment
+    }
+
 
 
   }  
