@@ -96,10 +96,11 @@ function getLearnerData(course, ag, submissions) {
 
             // setting up my array to push objects into 
         const expectedResult = []; 
-        // keeping this here just in case 
+        // keeping this here just in case I need an empty object for testing
+        // cna use this to push into the results array that I'll need at the end?
         const pocket = {};
 
-            // initializing some variables for later 
+            // initializing some variables for later and using 'let' since they'll need to be redefinable
     let avg1 = 0;
     let avg2 = 0;
 
@@ -143,8 +144,6 @@ function getLearnerData(course, ag, submissions) {
         arrayOfLearnerIDs.push(grabID);
         
     }
-
- 
    // !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
 }
    console.log(arrayOfLearnerIDs); // [125, 132] 
@@ -161,29 +160,36 @@ function getLearnerData(course, ag, submissions) {
 
 
   // ***************************************************************************
-  // In this loop I will be going through the assignments by their IDs and putting 
+// putting this function in comment jail until I figure out exactly what 
+// I 🤡 was trying to do and what's wrong with it
+// alright taking this function out of jail for second and gonna try again
+// never mind back in jail again, not gonna let it make me crash out 
+
+// function getAssignment(submission) {
+//   let assignment;
+
+//   for (let i = 0; i < submissions.length; i++) {
+//     console.log(submissions[i]); 
+//   }
+
+//       for (let i = 0; i < ag.assignments.length; i++) {
+        
+//        if (submission.assignment_id === ag.assignments[i].id ) {
+//           assignment = ag.assignments[i];
+//        }
+
+//     };
+//     return assignment;
+//   };
+
+//   console.log(getAssignment());
+
+
+    // ***************************************************************************
+      // In this loop I will be going through the assignments by their IDs and putting 
   // them into an object since I'll need their ID to average the learner's score (in submissions) against 
   // the total points possible (in assignments / ag).
   // assignmentByID acts as a drawer that points to 1, 2, 3 folders that hold the info for each assignment inside.
-  // const retrieveAssignment = {};
-
-function getAssignment() {
-      for (let i = 0; i < ag.assignments.length; i++) {
-       const assignment = ag.assignments[i];
-      //const assignment =  getAssignment(i.assignment_id); 
-      // console.log(assignment.id); // key for each corresponding assignment object
-      // pushing the ID of each assignmnet as a key to my assignmentByID object
-      // targets object[key] = the assignments get added to the assignmentByID{} as the for loop loops
-      // through the original AssignmentGroup object aka ag.assignments[0], [1], etc.
-      console.log(assignment);
-
-      // expectedResult.push(assignment);
-      return assignment;
-    };
-
-  };
-
-  console.log(getAssignment());
 
   const assignmentByID = {};
 
@@ -195,7 +201,6 @@ function getAssignment() {
       // through the original AssignmentGroup object aka ag.assignments[0], [1], etc.
       assignmentByID[assignment.id] = assignment;
 
-      // expectedResult.push(assignment);
       
     }
 
@@ -219,8 +224,27 @@ function getAssignment() {
 
     for (let i = 0; i < submissions.length; i++) {
        // const submission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
-        console.log(submissions[i]); 
+       //console.log(submissions[i]); 
+        // new variable to check assignments stashed in my assignmentByID object
+                                // loop through submissions to match their IDs through every iteration of i
+       const thisAssignment = assignmentByID[submissions[i].assignment_id];
+       console.log(thisAssignment); 
 
+       // now that I know it's logging out the submitted assignmnets, I need to check the assignmnet that isn't due yet
+        if (thisAssignment) {
+          // where ever 'thisAssignment' is currenlty iterated if it matches/if it exists
+          // 'cos otherwise if it doesn't exist then my thisAssignment variable becomes undefined
+          // because the loop was unable to match? 
+          // so basically this if statement is just checking to see if the 'file or folder' or whatever analogy I'm using at this point - is there.
+          
+          // now if the assignment exists, I need to check the date because I don't want the 125 terminator
+          // submitting an assignment from the future, thanks. 
+          // so we set up a variable for date which I tested how it works in scrap-paper.js
+          const dueDate = new Date(thisAssignment.due_at); 
+          // console.log(dueDate); // verifying its retrieving the dates for each submission correctly
+
+
+        }
         // if (i + 1 === submissions.length) {
 
         // }

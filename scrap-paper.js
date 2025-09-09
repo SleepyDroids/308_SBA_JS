@@ -44,3 +44,28 @@ console.log(Number.parseInt("3156-11-15"));
 const currentDate = new Date();
 console.log(currentDate);
 
+const dueDate = new Date("2025-11-1");
+console.log(dueDate);
+
+// testing something about functions and function declarations vs. function expressions
+
+console.log(goLogThis("BIBLO BAGGINSSSSSS"));
+// can be hoisted
+function goLogThis(wordHere) {
+    return `Testing something here: ${wordHere}`; 
+
+}
+
+                    // anonymous function
+const testFunction = function(test) {
+     return `Running it back with anotha one! ${test}`;
+    
+}
+// variable is equal to the function also cannot be hoisted
+console.log(testFunction("YOLO SWAGGINSSSSSSS"));
+
+// testing something with arrays
+// only check for a passed value
+
+// const testingArrayValidity = [];
+// console.log(testingArrayValidity.isArray());
