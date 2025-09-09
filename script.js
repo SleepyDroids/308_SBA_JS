@@ -292,9 +292,20 @@ function getLearnerData(course, ag, submissions) {
               if(!pocket[studentID]) {
                 // build the file in here if it does NOT already exist
                 // so using the object[id here] = "value here" method to create an object
+                // pocket[studentID] = {
+                //   "testing something for now": 1289739823 // added a semi-colon here oops
+                // }
+                // just leaving this here so now I need to build a file for the info I want
+
+                // since this is a new object, I can set the key values to whatever I want  
                 pocket[studentID] = {
-                  "testing something for now": 1289739823 // added a semi-color here oops
+                  pointsEarnedOnThisAssignment: 0,
+                  totalPointsPossibleOnThisAssignment: 0, 
+                  // avgForAssignment: 0 // I need three calculations total so maybe another object??? To hold the calculations???? Can use dot notation to grab values (ie. ag.assignments.id)
+                  avgsForAssignment: {}
                 }
+
+                console.log(pocket); // is logging out the 'empty files' still so that's a relief
               }
 
             }
