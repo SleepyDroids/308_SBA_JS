@@ -218,11 +218,14 @@ function getLearnerData(course, ag, submissions) {
 
     // }
 
-    console.log(submissions[0].submission.score); // 47
+    // console.log(submissions[0].submission.score); // 47
 
 
-
+    // ✨ THE BIG MAIN SUPER LOOP FOR CHECKING THINGS VIA SUBMISSIONS ✨
     for (let i = 0; i < submissions.length; i++) {
+        // TESTING GROUND for INSIDE the loop: 
+       // console.log(submissions[i].submissions); // undefined
+
        // const submission = submissions[i]; // grabbing all submitted assignment objects & storing them in a variable
        //console.log(submissions[i]); 
         // new variable to check assignments stashed in my assignmentByID object
@@ -241,8 +244,37 @@ function getLearnerData(course, ag, submissions) {
           // submitting an assignment from the future, thanks. 
           // so we set up a variable for date which I tested how it works in scrap-paper.js
           const dueDate = new Date(thisAssignment.due_at); 
+// -------------------------------------------- (getting lost in my if statements so separating them)
           // console.log(dueDate); // verifying its retrieving the dates for each submission correctly
+              // if due date is NOT greater than currentDate ie. only focus and grade the work if it is ACTUALLY due
+            if (!(dueDate > currentDate)) {
+              let score = 0;
+              // initializing to 0 because if a submission isn't due yet, you don't get points until AFTER it is due
+              // also to initialize for adding the points or rather score later into the results
+              // so better to start from 0 for the += operator to work from that point
 
+              // if the submissions object exists inside of LearnerSubmissions 
+              if (submissions[i].submissions) {
+                // now I bring in score because this only procs if the submission exists
+                // starting from zero and slotting in the score
+                score = submissions[i].submissions.score; // need the integer value of what the learner earned in order to be able to calculate the averages
+              }
+// -------------------------------------------- (getting lost in my if statements so separating them)
+              // now that I've established the submission exists and that the score varible is grabbing the score
+              // setting up for computing averages bc I still need to link to the learners 
+              // otherwise its not gonna print out propertly at the end
+              // ie. i'm not matching the averages to the learners
+              let submittedAvg = score / thisAssignment.points_possible; 
+              console.log(score); // 0 - right I set it to that I forgot
+
+              // since I am still looping in submissions, I want to grab the learner ID even if I don't know how I'm 
+              // going to link them yet but I know I need them from the submitted assignments
+              // so now where ever I am at in the loop, I am targeting that learner's ID number aka 125 or 132
+              let studentID = submissions[i].learner_id;
+
+
+
+            }
 
         }
         // if (i + 1 === submissions.length) {
