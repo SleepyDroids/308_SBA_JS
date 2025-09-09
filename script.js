@@ -97,7 +97,7 @@ function getLearnerData(course, ag, submissions) {
             // setting up my array to push objects into 
         const expectedResult = []; 
         // keeping this here just in case I need an empty object for testing
-        // cna use this to push into the results array that I'll need at the end?
+        // can use this to push into the results array that I'll need at the end?
         const pocket = {};
 
             // initializing some variables for later and using 'let' since they'll need to be redefinable
@@ -272,7 +272,30 @@ function getLearnerData(course, ag, submissions) {
               // so now where ever I am at in the loop, I am targeting that learner's ID number aka 125 or 132
               let studentID = submissions[i].learner_id;
 
+              // things I still need: object of learner data to push into the results array 
+              // maybe I can make the object first? Like an empty folder? 
+              // maybe something like expectedResults.push({}) ???
+              // WAIT - I can use variables for object keys 
+              // so can I make 'files' as it is looping or I should say key:value pairs
+              // so as it loops I can build a file on each learner? Or the for loops is doing that 
 
+              /* Sequence should be as follows: 
+                  1. if statement - due date check
+                  2. grab the score from the submission
+                  3. calculate the GPA for that particular assignment 
+                  4. grab the learner ID and use the studentID variable to make a 'file' label so it'd be like Object[studentID]
+
+                  so like in the array I made I can use the logical NOT ! operator again and push the info as it loops
+                  whichhhhh means I need another if statement 
+              */
+// -------------------------------------------- (getting lost in my if statements so separating them)
+              if(!pocket[studentID]) {
+                // build the file in here if it does NOT already exist
+                // so using the object[id here] = "value here" method to create an object
+                pocket[studentID] = {
+                  "testing something for now": 1289739823 // added a semi-color here oops
+                }
+              }
 
             }
 
