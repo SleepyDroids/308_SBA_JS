@@ -254,10 +254,10 @@ function getLearnerData(course, ag, submissions) {
               // so better to start from 0 for the += operator to work from that point
 
               // if the submissions object exists inside of LearnerSubmissions 
-              if (submissions[i].submissions) {
+              if (submissions[i].submission) {
                 // now I bring in score because this only procs if the submission exists
                 // starting from zero and slotting in the score
-                score = submissions[i].submissions.score; // need the integer value of what the learner earned in order to be able to calculate the averages
+                score = submissions[i].submission.score; // need the integer value of what the learner earned in order to be able to calculate the averages
               }
 // -------------------------------------------- (getting lost in my if statements so separating them)
               // now that I've established the submission exists and that the score varible is grabbing the score
@@ -299,14 +299,31 @@ function getLearnerData(course, ag, submissions) {
 
                 // since this is a new object, I can set the key values to whatever I want  
                 pocket[studentID] = {
-                  pointsEarnedOnThisAssignment: 0,
-                  totalPointsPossibleOnThisAssignment: 0, 
+                  totalEarned: 0,
+                  pointsPossible: 0, 
                   // avgForAssignment: 0 // I need three calculations total so maybe another object??? To hold the calculations???? Can use dot notation to grab values (ie. ag.assignments.id)
-                  avgsForAssignment: {}
-                }
+                  averages: {}
+                };
 
                 console.log(pocket); // is logging out the 'empty files' still so that's a relief
-              }
+              };
+// -------------------------------------------- (getting lost in my if statements so separating them)
+              // Now I need to start adding the stuff to the student files in HERE using the variables I made
+              // into the pocket object as the program loops through the submissions info
+              // I regret the amount of if statements I made but it's too late to go back now so I'm committing to the bit (git)!!
+
+
+              // INSIDE OF DUE DATE IF STATEMENT
+              // inside the file, get the student ID and label the file and get the points they earned and THEN add it to the score var
+              pocket[studentID].totalEarned = pocket[studentID].totalEarned + score; 
+                                                        // grab the assignment var from before and grab the .points_possible value
+              pocket[studentID].pointsPossible = pocket[studentID].pointsPossible + thisAssignment.points_possible;
+              pocket[studentID].averages[thisAssignment.id] = submittedAvg;
+              // console.log(thisAssignment.points_possible); // 150
+              
+              console.log(pocket); // not logging out correctly ???
+              // fixed: on lines 257 to 260 i was using a plural submissions instead of just submission 🤡
+              // stil not 100% the correct numbers but will try to fix later, just focus on pushing to a final results form
 
             }
 
@@ -320,8 +337,9 @@ function getLearnerData(course, ag, submissions) {
     //     expectedResult.push([submission.learner_id] = "125");
     // }
 
-    }
+    } // end of super huge submissions for loop ***************************
 
+    // ***************************************************************************    
 
 
     console.log(expectedResult);
