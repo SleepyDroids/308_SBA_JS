@@ -339,7 +339,25 @@ function getLearnerData(course, ag, submissions) {
 
     } // end of super huge submissions for loop ***************************
 
-    // ***************************************************************************    
+    // ***************************************************************************
+    /*
+    Objectives: 
+    1. Start creating results (can use my arrayOfLearnerIDs) for the ID part
+    2. Calculate and build averages
+    3. Start building out the object as shown in the example for the array
+    4. Need to pull from pocket to link to learner ID? 
+    */
+
+  for (let i = 0; i < arrayOfLearnerIDs.length; i++) {
+    // variable localized to this code block so I can use the same name
+    const studentID = arrayOfLearnerIDs[i];
+    // console.log(studentID); // 125, 132
+
+    // need to grab the info from the pocket object
+    const info = pocket[studentID];
+    console.log(info); // still not logging the correct info but will try to fix later
+  }  
+    
 
 
     console.log(expectedResult);
