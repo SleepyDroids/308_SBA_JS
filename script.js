@@ -190,7 +190,7 @@ function getLearnerData(course, ag, submissions) {
       // In this loop I will be going through the assignments by their IDs and putting 
   // them into an object since I'll need their ID to average the learner's score (in submissions) against 
   // the total points possible (in assignments / ag).
-  // assignmentByID acts as a drawer that points to 1, 2, 3 folders that hold the info for each assignment inside.
+  // assignmentByID acts as a drawer that points to 1, 2, 3 files that hold the info for each assignment inside.
 
   const assignmentByID = {};
 
@@ -205,8 +205,8 @@ function getLearnerData(course, ag, submissions) {
       
     }
 
-    console.log(assignmentByID);
-    console.log(assignmentByID["3"].points_possible); // testing value retrieval
+    // console.log(assignmentByID);
+    // console.log(assignmentByID["3"].points_possible); // testing value retrieval
   
 
     // ***************************************************************************
@@ -214,13 +214,6 @@ function getLearnerData(course, ag, submissions) {
     // ie. if else statement to check if ag.assignments[0].id === submissions[0].assignment_id? 
       console.log(ag.assignments[0].id, 
         submissions[0].assignment_id); // 1 1
-
-    // function getAssignments() {
-
-    // }
-
-    // console.log(submissions[0].submission.score); // 47
-
 
     // ✨ THE BIG MAIN SUPER LOOP FOR CHECKING THINGS VIA SUBMISSIONS ✨
     for (let i = 0; i < submissions.length; i++) {
@@ -329,6 +322,8 @@ function getLearnerData(course, ag, submissions) {
             }
 
         }
+
+        // was testing out something here, but couldn't figure it out 
         // if (i + 1 === submissions.length) {
 
         // }
@@ -392,13 +387,14 @@ function getLearnerData(course, ag, submissions) {
 
     }
 
-
+    // now I think I can push the row into my array
+    expectedResult.push(row);
 
   }  
     
 
 
-    console.log(expectedResult);
+    console.log(expectedResult); // the row push seems to be working!!!
 
 
 // here, we would process this data to achieve the desired result.
@@ -417,9 +413,9 @@ function getLearnerData(course, ag, submissions) {
 //     }
 //   ];
 
-//   return result;
+  return expectedResult;
 }
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-// console.log(result);
+console.log(result);
