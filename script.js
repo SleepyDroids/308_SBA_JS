@@ -123,7 +123,7 @@ function getLearnerData(course, ag, submissions) {
 
   function iDMatchCheck(course, ag) {
     if (course.id !== ag.course_id) {
-      throw new error("The course IDs do not match."); 
+      throw new error("The course and corresponding assignmnets IDs do not match."); 
     }
   } // end of function
 
