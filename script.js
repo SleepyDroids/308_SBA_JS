@@ -102,8 +102,8 @@ function getLearnerData(course, ag, submissions) {
 
             // initializing some variables for later and using 'let' since they'll need to be redefinable
     let avg = 0;        
-    let avg1 = 0;
-    let avg2 = 0;
+    // let avg1 = 0;
+    // let avg2 = 0; 
 
     // ***************************************************************************
     // using a ternary operator here to check if the course IDs match across objects
@@ -124,29 +124,46 @@ function getLearnerData(course, ag, submissions) {
 
     const arrayOfLearnerIDs = []; // setting up an empty array to hold the learner IDs
 
-    for (let i =0; i < submissions.length; i++) {
-    const grabID = submissions[i].learner_id // targeting the learner ID number
+//     for (let i = 0; i < submissions.length; i++) {
+//     const grabID = submissions[i].learner_id // targeting the learner ID number
     
-    // I am pushing the learner_id from the object of LearnerSubmissions
-    // into the empty array I defined earlier
+//     // I am pushing the learner_id from the object of LearnerSubmissions
+//     // into the empty array I defined earlier
 
-    // want to account for duplications while I am looping so it doesn't push
-    // multiple values into my arrayOfLearnerIDs
+//     // want to account for duplications while I am looping so it doesn't push
+//     // multiple values into my arrayOfLearnerIDs
 
-    /*
-    .includes() checks an element inside a given array to see if it exists 
-    SO !learnerByID.includes(grabID) is basically checking if the value is NOT
-    in the empty array. If it's not there, it is pushed to the array. 
+//     /*
+//     .includes() checks an element inside a given array to see if it exists 
+//     SO !learnerByID.includes(grabID) is basically checking if the value is NOT
+//     in the empty array. If it's not there, it is pushed to the array. 
 
-    It skips over the duplicate entries because it only pushes the value if it 
-    ISN'T there. Else if it is already there, it does not push.
-    */
-    if (!arrayOfLearnerIDs.includes(grabID)) {
+//     It skips over the duplicate entries because it only pushes the value if it 
+//     ISN'T there. Else if it is already there, it does not push.
+//     */
+//     if (!arrayOfLearnerIDs.includes(grabID)) {
+//         arrayOfLearnerIDs.push(grabID);
+        
+//     }
+//    // !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
+// }
+
+  // going to try and turn the above FOR LOOP into a WHILE loop 
+    // had an infinite loop for a second but I see what I did wrong (had an i++ and the while condition was always true)
+
+    let i = 0; // has to be initialized outside of the loop
+
+    while (i < submissions.length ) {
+      const grabID = submissions[i].learner_id
+
+      if (!arrayOfLearnerIDs.includes(grabID)) {
         arrayOfLearnerIDs.push(grabID);
         
     }
-   // !arrayOfLearnerIDs.includes(grabID) ? arrayOfLearnerIDs.push(grabID) : false;
-}
+    // index equal to i + 1 forces the loop to move onto the next item
+    i = i + 1;
+    }
+
    console.log(arrayOfLearnerIDs); // [125, 132] 
 
    // please don't ask, trying to figure something out here
@@ -358,7 +375,7 @@ function getLearnerData(course, ag, submissions) {
 
     avg = 0; 
 
-    // procs because all the students earned points on their current assignments
+    // procs because all the students earned points on their current assignments aka truthy
     if (info.pointsPossible > 0) {
       avg = info.totalEarned / info.pointsPossible;
     }
