@@ -376,10 +376,20 @@ function getLearnerData(course, ag, submissions) {
     }
 
     // need to add per assignment scores/averages as well
-    // so INNER loop (i'm afraid)
+    // so INNER loop (i'm afraid) that goes through the actual assignments requirements
     for (let j = 0; j < ag.assignments.length; j++) {
+      // variable grabs the ID of each assignment as it 
       const currentAssignmentID = ag.assignments[j].id; 
       // console.log(currentAssignmentID); // correctly targets ID number per assignment
+
+        // if the value of the averages exist
+      if (info.averages[currentAssignmentID]) {
+        // console.log(info.averages[currentAssignmentID]); // 0.94 & 1 so it's grabbing the numbers bc they do exist
+        // object[variable] = the average
+        // this should build out the assignment ID and its specifc calculated average
+        row[currentAssignmentID] = info.averages[currentAssignmentID];
+      }
+
     }
 
 
