@@ -24,7 +24,7 @@ Essentially a "file" per learner containing their GPAs.
 
 - I leaned very heavily on if else statements to supply most of my logic and to proc the program to build or manipulate arrays/objects. I acknowledge this isn't necessarily dynamic and I struggled on where I could add a function or what would qualify as a repeated task. 
 - My main objective was to get to the output of return results as supplied in the example data, as closely as possible. 
-- I think in the future, mapping out some sort of logic flow/tree and making sure the logic made sense to me will help in the future. Also generally improving repetition with things like functions, different loop types and learning how to map objects as well: are all things that could improve the functionality of this program.
+- I think in the future, mapping out some sort of logic flow/tree and making sure the logic made sense to me will help, especially since I started diving in on the coding before fully establishing how I was going to access information and which information from the objects were the most relevant to the outputs I needed to match in the end. Also generally improving repetition with things like functions, different loop types and learning how to map objects as well: are all things that could improve the functionality of this program.
 - Also providing more code for edge cases, increasing the program's overall scalability when it comes to future learners and accounting for additional assignments and their respective submissions. 
 
 # @SleepyDroids 🤖
