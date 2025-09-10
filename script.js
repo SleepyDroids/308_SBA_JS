@@ -427,3 +427,12 @@ function getLearnerData(course, ag, submissions) {
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
 console.log(result);
+
+/*
+SPECIAL SHOUTOUT: 
+Thank you to Tobi and Nyala for helping me in the discord 
+and in class when I was trying to figure out how to initially 
+tackle this assignment. And shoutout to my friend Jalen for 
+teaching me that when creating an object, they can have 
+variables as their keys. 
+*/
