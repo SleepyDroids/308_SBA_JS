@@ -117,8 +117,21 @@ function getLearnerData(course, ag, submissions) {
   // will update this later as I just focus on getting the results to look the same as the example version
 
   // course.id == ag.course_id ? console.log("The course IDs are a match for both the course and the assignment.") : console.log("The course IDs do not match.");
-  if (course.id !== ag.course_id) {
-    return [];
+  // if (course.id !== ag.course_id) {
+  //   return [];
+  // }
+
+  function iDMatchCheck(course, ag) {
+    if (course.id !== ag.course_id) {
+      throw new error("The course IDs do not match."); 
+    }
+  } // end of function
+
+  // should in theory proc an error in the console if the course ID doesn't match the assignmnet ID
+  try {
+    iDMatchCheck(451, 452);
+  } catch (e) {
+    console.error(e);
   }
 
   // going to save this for the assignment that isn't due yet so stashing here for now

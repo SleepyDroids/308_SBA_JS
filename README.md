@@ -9,6 +9,7 @@ Essentially a "file" per learner containing their GPAs.
 
 - Omitted an assignment if it wasn't due yet. 
 - Utilized two different loop types (for and while).
+- Used a try/catch statement to manage a potential error in the code.
 - Used operators to perform calculations on variables and literals. 
 - Declared variables properly using let and const where appropriate. (arrays and objects with const, mutable variables with let). 
 - Used strings, numbers, and Boolean values cached within variables. (ie. calculating averages). 
@@ -17,6 +18,7 @@ Essentially a "file" per learner containing their GPAs.
 - Demonstrated the retrieval, manipulation, and removal of items in an array or properties in an object. 
 - Program outputs processed data as described above. (as close as I could get it to).
 - Ensured that the program runs without errors.
+- Created a function to account for the course ID not matching an assignment ID. 
 
 # Reflection 💭
 
